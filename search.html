@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="search">
 <head>
     <meta charset="UTF-8">
     <title>Barebnb</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <script src="#"></script>
 </head>
 <body>
+    <div class="container-fluid" ng-controller="searchCtrl">
+        <h1>Barebnb</h1>
+        <h2>Where do you want to go?</h2>
 
+        <div class="row">
+            <div class="col-sm-4">
+                <input class="form-control input-lg"
+                    placeholder="Search"
+                    ng-model="searchKey"
+                    autofocus>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4" ng-repeat="prop in props | 
+                filter:searchKey">
+                <h3>{{ prop.city }}</h3>
+                <h3>{{ prop.country }}</h3>
+                <h4>{{ prop.beds }} beds | {{ prop.baths }} baths</h4>
+                <h4>{{ prop.amenities }}</h4>
+            </div>
+        </div>
+
+        <script src="angular.min.js"></script>
+        <script src="search.js"></script>
+        <script>
+            angular.module('search', [])
+                .controller('searchCtrl', SearchCtrl)
+
+            function SearchCtrl($scope) {
+                $scope.props = props;
+            }
+        </script>
+    </div>
 </body>
 </html>
