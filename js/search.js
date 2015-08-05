@@ -11,7 +11,7 @@ var props = [
         country: 'United States',
         beds: '1',
         baths: '1.5',
-        amenities: 'Great view, '
+        amenities: 'Great view! parking'
     },
     {
         city: 'Chicago',
